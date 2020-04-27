@@ -7,6 +7,7 @@ var upload=(multer({dest:'./uploads'}));
 var User=require('../models/user');
 var passport =require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var nodeMailer=require('nodemailer');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -56,6 +57,7 @@ router.post('/register',upload.single('profile'),function(req,res,next){
   var uname=req.body.username;
   var password=req.body.password;
   var cpassword=req.body.cpassword;
+  var contact=req.body.contact;
   if(req.file){
     var profileimage=req.file.filename;
   }
@@ -67,11 +69,34 @@ router.post('/register',upload.single('profile'),function(req,res,next){
     email:email,
     password:password,
     profileimage:profileimage,
-    uname:uname
+    uname:uname,
+    contact:contact
   });
   User.createUser(newUser,function(){
     console.log(newUser);
   });
+  var transporter = nodeMailer.createTransport({
+    service:'Gmail',
+    auth:{
+        user:'ankurlohiya3@gmail.com',
+        pass:'******'
+    }
+});
+var mailOptions={
+    from:'Deepankur Lohiya<ankurlohiya3@gmail.com>',
+    to:`${email}`,
+    subject:'Confirmation Email',
+    text:'You have been sucessfully registered with us',
+    html:`<ul><li>Name:${name}</li><li>Mobile No.:${contact}</li><li>Profile:${profileimage}</li></ul>`
+}
+transporter.sendMail(mailOptions,(err,info)=>{
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log(`Mail Sent at ${req.body.email}`);
+    }
+});
   res.location('/');
   res.redirect('./login');
 });

@@ -20,6 +20,9 @@ var userSchema=mongoose.Schema({
     },
     uname:{
         type:String
+    },
+    contact:{
+        type:Number
     }
 });
 var User=module.exports=mongoose.model('user',userSchema);

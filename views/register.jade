@@ -6,19 +6,22 @@ block content
         .form-group
           label Name
           input.form-control(name='name',type='text',placeholder='Enter your name',id='name')
-         .form-group
+        .form-group
+          label Contact-Number
+          input.form-control(name='contact',type='number',placeholder='Enter your contact number',maxlength='10')
+        .form-group
           label Email
           input.form-control(name='email',type='email',placeholder='Enter your email')
-         .form-group
+        .form-group
           label Username
           input.form-control(name='username',type='text',placeholder='Enter your username')
-         .form-group
+        .form-group
           label Password
           input.form-control(name='password',type='password',placeholder='Enter your password')
-         .form-group
+        .form-group
           label Confirm Password
           input.form-control(name='cpassword',type='password',placeholder='Confirm password')
-         .form-group
+        .form-group
           label Profile Image
           input.form-control(name='profile',type='file')
-         input.btn.btn-primary(type='submit',value='Register')
+        input.btn.btn-primary(type='submit',value='Register')
