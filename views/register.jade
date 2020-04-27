@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h2.page-header Register
+    form(method='post', action='/users/register',enctype='multipart/form-data')
+        .form-group
+          label Name
+          input.form-control(name='name',type='text',placeholder='Enter your name',id='name')
+         .form-group
+          label Email
+          input.form-control(name='email',type='email',placeholder='Enter your email')
+         .form-group
+          label Username
+          input.form-control(name='username',type='text',placeholder='Enter your username')
+         .form-group
+          label Password
+          input.form-control(name='password',type='password',placeholder='Enter your password')
+         .form-group
+          label Confirm Password
+          input.form-control(name='cpassword',type='password',placeholder='Confirm password')
+         .form-group
+          label Profile Image
+          input.form-control(name='profile',type='file')
+         input.btn.btn-primary(type='submit',value='Register')
