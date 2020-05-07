@@ -14,8 +14,8 @@ npm install
 ```
 nodemon app.js
       or
-npm start
+  npm start
 ```
 
 ## Made by:
-###Deepankur Lohiya
+### Deepankur Lohiya
